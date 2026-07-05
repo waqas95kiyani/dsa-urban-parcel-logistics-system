@@ -1,48 +1,48 @@
-# Urban Parcel Logistics System using Data Structures and Algorithms
+# Designing Urban Parcel Logistics Optimisation System
+
+Final Assignment for **Data Structures and Algorithms (COMP5008)**
 
 ## Overview
 
-This project implements a modular parcel logistics system for a fictional company, **CityDrop Logistics**, using custom data structures and algorithms. The system was designed to optimise different parts of an urban delivery network, including delivery zone mapping, customer record management, parcel prioritisation, and end-of-day delivery report sorting.
+This project implements a modular urban parcel logistics optimisation system for a fictional company called **CityDrop Logistics**. The system demonstrates how different data structures and algorithms can be used together to support delivery network management, customer record storage, parcel prioritisation, and delivery report sorting.
 
-## Project Objective
+The project was developed using custom implementations of major abstract data types, including **Graphs, Hash Tables, Heaps, Linked Lists, Queues, and Stacks**. It also includes algorithmic techniques such as **Breadth-First Search, Depth-First Search, Dijkstra’s shortest path algorithm, Quick Sort, and Merge Sort**.
 
-The main objective of this project was to design and implement a logistics system using core abstract data types and algorithms without relying heavily on built-in data structures.
+## Project Objectives
 
-The system includes four main modules:
+The main objectives of this project were to:
 
-- Delivery network representation using graphs
-- Customer information storage using a hash table
-- Parcel prioritisation using a max heap
-- Delivery report sorting using quick sort and merge sort
+- Represent an urban delivery network using a weighted graph.
+- Find reachable delivery zones and hop levels using BFS.
+- Detect cycles in the delivery network using DFS.
+- Calculate shortest delivery paths and travel times using Dijkstra’s algorithm.
+- Store and manage customer delivery records using a custom hash table.
+- Prioritise parcel delivery requests using a max heap.
+- Generate sorted delivery reports using Quick Sort and Merge Sort.
+- Compare sorting performance across different input sizes and data orders.
 
 ## System Modules
 
-### Module 1: Delivery Network Graph
+### Module 1: Delivery Network using Graphs
 
-The delivery network was represented using a weighted undirected graph.
+This module represents delivery hubs and routes using a weighted undirected graph.
 
-In this module:
+- Each delivery hub is represented as a vertex.
+- Each route between hubs is represented as an edge.
+- Edge weights represent travel time between hubs.
+- BFS is used to show reachable zones and hop levels.
+- DFS is used for cycle detection.
+- Dijkstra’s algorithm is used to calculate the shortest delivery path and time.
 
-- Each delivery hub or zone is represented as a graph vertex.
-- Connections between hubs are represented as weighted edges.
-- Edge weights represent the travel time between delivery zones.
-- An adjacency list structure was used to store graph connections.
+Supporting structures used:
 
-Algorithms implemented:
+- Linked List
+- Queue
+- Stack
 
-- Breadth-First Search for reachable zones and hop-level traversal
-- Depth-First Search for cycle detection
-- Dijkstra’s algorithm for shortest path and delivery time calculation
+### Module 2: Customer Records using Hash Table
 
-Supporting data structures:
-
-- Custom linked list
-- Custom queue
-- Custom stack
-
-## Module 2: Customer Hash Table
-
-A custom hash table was implemented to store and manage customer delivery records.
+This module manages customer records using a custom hash table.
 
 Each customer record includes:
 
@@ -52,52 +52,39 @@ Each customer record includes:
 - Priority level
 - Delivery status
 
-Key features:
+Key features include:
 
 - Insert customer record
 - Search customer by ID
 - Delete customer record
 - Update delivery status
 - Auto-adjust priority level based on delivery status
-- Collision handling using probing
-- Dynamic resizing based on load factor
-- CSV import and export support
+- Collision handling
+- Dynamic resizing using load factor
+- CSV import and export
 
-A custom hash function using shift, add, and XOR logic was used to distribute string-based customer IDs across the table.
+### Module 3: Parcel Prioritisation using Max Heap
 
-## Module 3: Parcel Priority Queue using Max Heap
+This module prioritises parcel delivery requests using a max heap.
 
-A max heap was implemented to manage parcel delivery priority.
-
-Each heap node stores:
+Each parcel heap node stores:
 
 - Customer ID
 - Priority level
 - Delivery time
 - Delivery status
-- Calculated priority score
+- Priority score
 
-The heap ensures that the parcel with the highest priority score remains at the top.
+The heap keeps the highest priority parcel at the top. Priority is calculated using delivery priority and delivery time, allowing urgent and time-sensitive parcels to be handled first.
 
-Key features:
+This module also integrates outputs from:
 
-- Insert parcel request
-- Update parcel request
-- Extract highest priority parcel
-- Heapify up and heapify down
-- Dynamic heap resizing
-- Integration with customer hash table and delivery graph
+- Module 1: shortest delivery time from graph
+- Module 2: customer record and priority details from hash table
 
-This module connects the graph and hash table modules by using customer ID, delivery zone, priority level, and shortest delivery time.
+### Module 4: Delivery Report Sorting
 
-## Module 4: Delivery Report Sorting
-
-Sorting algorithms were implemented to generate end-of-day delivery reports.
-
-Algorithms implemented:
-
-- Quick Sort
-- Merge Sort
+This module generates sorted delivery reports using Quick Sort and Merge Sort.
 
 Sorting can be performed by:
 
@@ -105,11 +92,21 @@ Sorting can be performed by:
 - Delivery zone
 - Delivery ID
 
-The module also supports reading delivery records from CSV files and exporting sorted results into new CSV files.
+The module uses external CSV files with different input sizes and data orders to compare sorting performance.
 
-## Algorithms Used
+Tested input sizes:
 
-This project includes the implementation of:
+- 100 records
+- 500 records
+- 1000 records
+
+Tested input orders:
+
+- Nearly sorted
+- Random
+- Reversed
+
+## Algorithms Implemented
 
 - Breadth-First Search
 - Depth-First Search
@@ -121,8 +118,6 @@ This project includes the implementation of:
 
 ## Data Structures Used
 
-The project uses the following custom data structures:
-
 - Graph
 - Linked List
 - Queue
@@ -131,113 +126,171 @@ The project uses the following custom data structures:
 - Hash Entry
 - Max Heap
 - Heap Node
-- NumPy arrays for internal storage
+- NumPy arrays
 - Delivery record objects
 
-## Integration Design
+## Dependencies Used
 
-The modules were designed to work independently and as part of an integrated logistics system.
+```python
+numpy
+csv
+time
+```
+## Dependency Purpose
 
-The integration works as follows:
+- **numpy**: Used to create `np.empty` arrays for storing containers of the major data structures.
+- **csv**: Used to read input CSV files and write output CSV files.
+- **time**: Used to calculate execution time for sorting and performance testing.
 
-1. The graph module calculates delivery times between zones.
-2. The hash table stores customer records and delivery zones.
-3. The heap module combines customer priority and delivery time to prioritise parcels.
-4. The sorting module generates final delivery reports.
+## User Instructions
 
-This structure demonstrates how multiple data structures can work together in a real-world logistics scenario.
+1. Open `Assignmentcode.ipynb`.
 
-## Complexity Analysis
+2. The file can be run in **Visual Studio Code** with the **Jupyter Notebook extension** installed.
 
-The project includes algorithm complexity analysis for all major operations.
+3. Select **Run All** from the top options to run the complete code in a single go.
 
-Examples:
+4. Individual test blocks can also be run separately for testing each module.
 
-- Graph BFS: O(V + E)
-- Graph DFS: O(V + E)
-- Dijkstra’s algorithm using linked-list scanning: O(V²)
-- Hash table insert/search/delete average case: O(1)
-- Hash table worst case with collisions: O(n)
-- Heap insert and extract max: O(log n)
-- Quick Sort average case: O(n log n)
-- Quick Sort worst case: O(n²)
-- Merge Sort: O(n log n)
+5. No user menu was created because it was not required in the assignment. All expected outputs and test methods are already pre-written in the test code.
+
+6. To test different results, only change the relevant values inside the provided test blocks.
+
+7. Do not delete the `Samples` directory or the `output` directory inside the `Samples` directory.
+
+8. Do not amend or delete `customers_record.csv`.
+
+## Repository Contents
+
+### 1. Technical Report
+
+The technical report explains the theory behind the system design. It includes:
+
+- Data structures used
+- Module design
+- Class diagrams
+- Algorithm choices
+- Complexity analysis
+- Sample outputs
+- Limitations and assumptions
+
+### 2. Assignmentcode.ipynb
+
+This is the main code file containing all four modules.
+
+No separate Python files were created because the assignment did not require them, and keeping all modules in one notebook made testing easier.
+
+The notebook includes:
+
+- Graph implementation
+- Linked list implementation
+- Queue implementation
+- Stack implementation
+- Hash table implementation
+- Heap implementation
+- Sorting implementation
+- Module testing
+- Integration testing
+
+### 3. customers_record.csv
+
+This file contains **75 customer records** used for the demonstration and testing of Module 2.
+
+It is required for:
+
+- Loading customer records into the hash table
+- Testing customer search, insert, delete, and update functions
+- Demonstrating hash table resizing and collision handling
+
+### 4. Samples Directory
+
+The `Samples` folder contains CSV files used for comparing Quick Sort and Merge Sort performance in Module 4.
+
+Files included:
+
+- `nearly_sorted_100.csv` – 100 records nearly sorted by delivery time
+- `nearly_sorted_500.csv` – 500 records nearly sorted by delivery time
+- `nearly_sorted_1000.csv` – 1000 records nearly sorted by delivery time
+- `random_100.csv` – 100 records randomly sorted by delivery time
+- `random_500.csv` – 500 records randomly sorted by delivery time
+- `random_1000.csv` – 1000 records randomly sorted by delivery time
+- `reversed_100.csv` – 100 records sorted in reverse order by delivery time
+- `reversed_500.csv` – 500 records sorted in reverse order by delivery time
+- `reversed_1000.csv` – 1000 records sorted in reverse order by delivery time
+
+### 5. Results Files Generated
+
+The code generates the following output files:
+
+- `exported_customers.csv`: Exported customer records from the hash table.
+- 18 CSV files generated by Module 4 inside the `Samples/output` directory:
+  - 9 result files for Merge Sort
+  - 9 result files for Quick Sort
+
+## Complexity Analysis Summary
+
+| Module | Main Operation | Time Complexity |
+|---|---|---|
+| Graph BFS | Traverse reachable hubs | O(V + E) |
+| Graph DFS | Cycle detection | O(V + E) |
+| Dijkstra | Shortest path using linked-list scanning | O(V²) |
+| Hash Table | Insert, search, delete average case | O(1) |
+| Hash Table | Worst case with collisions | O(n) |
+| Heap | Insert / extract max | O(log n) |
+| Quick Sort | Average case | O(n log n) |
+| Quick Sort | Worst case | O(n²) |
+| Merge Sort | All cases | O(n log n) |
 
 ## Sample Outputs
 
 The project includes sample outputs for:
 
 - Graph adjacency list representation
-- Reachable zones from a selected hub
+- Reachable delivery zones from a hub
 - BFS traversal with hop levels
 - DFS cycle detection
-- Shortest path and delivery time calculation
+- Dijkstra shortest path and travel time
 - Hash table insertion, search, deletion, resizing, and collision handling
-- Heap insertion, extraction, and priority updates
-- Integrated test across graph, hash table, and heap modules
-- Sorting test results for 100, 500, and 1000 delivery records
-
-## Key Features
-
-- Modular system design
-- Custom implementation of major data structures
-- Graph-based delivery network modelling
-- Customer management using hash tables
-- Priority-based parcel handling using max heap
-- Sorting and reporting using quick sort and merge sort
-- CSV import and export functionality
-- Independent module testing
-- Integrated system testing
-- Algorithm complexity analysis
+- Heap insertion, extraction, and priority update
+- Integration testing across graph, hash table, and heap modules
+- Sorting performance comparison for 100, 500, and 1000 records
 
 ## Skills Demonstrated
 
 This project demonstrates:
 
 - Python programming
-- Data structures and algorithms
 - Object-oriented programming
-- Modular software design
-- Algorithm complexity analysis
+- Data structures and algorithms
+- Modular system design
 - Graph traversal
 - Shortest path calculation
-- Hash table design
+- Hash table implementation
 - Heap-based priority queue implementation
 - Sorting algorithm implementation
-- CSV-based testing and reporting
+- CSV-based input/output handling
+- Algorithm complexity analysis
+- Integration testing
 
 ## Limitations
 
-Some limitations of the project include:
-
-- The parcel priority score formula is simplified and may not fully reflect real-world logistics priority rules.
-- The graph implementation avoids built-in Python data structures, which makes the code more complex but supports the learning objective.
-- Dijkstra’s algorithm uses linked-list scanning, resulting in O(V²) complexity rather than a more optimised priority queue approach.
-- The logistics network is based on a simplified simulated structure rather than a real-world road network.
-- External CSV files were used for testing and demonstration purposes.
+- The priority score formula is simplified and does not fully represent a real-world logistics priority model.
+- The project avoids built-in Python data structures as part of the assignment requirement, which makes some implementations more complex.
+- Dijkstra’s algorithm was implemented using linked-list scanning, resulting in O(V²) complexity.
+- The delivery network is simulated and does not use real road network data.
+- CSV files are used for demonstration rather than live logistics data.
 
 ## Future Improvements
 
-Possible improvements include:
+Possible future improvements include:
 
-- Implementing Dijkstra’s algorithm with a priority queue for better efficiency.
-- Adding real map or road network data.
-- Improving the parcel priority formula using more realistic logistics factors.
-- Adding a user interface or command-line menu.
-- Adding automated unit tests for each module.
-- Improving visualisation of delivery routes and priority queues.
-
-## Repository Contents
-
-This repository may include:
-
-- Python source code files
-- Module test files
-- CSV input files
-- CSV output files
-- Sample screenshots
-- Technical report
-- README documentation
+- Implementing Dijkstra’s algorithm using a priority queue for better efficiency.
+- Adding real-world map or road network data.
+- Improving the parcel priority score formula.
+- Adding a command-line menu or graphical user interface.
+- Adding automated unit tests.
+- Creating visual route maps for delivery paths.
+- Splitting the notebook into separate Python modules for better maintainability.
 
 ## Note
 
