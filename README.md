@@ -1,7 +1,5 @@
 # Designing Urban Parcel Logistics Optimisation System
 
-Final Assignment for **Data Structures and Algorithms (COMP5008)**
-
 ## Overview
 
 This project implements a modular urban parcel logistics optimisation system for a fictional company called **CityDrop Logistics**. The system demonstrates how different data structures and algorithms can be used together to support delivery network management, customer record storage, parcel prioritisation, and delivery report sorting.
