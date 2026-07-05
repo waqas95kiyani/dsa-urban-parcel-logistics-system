@@ -4,8 +4,6 @@
 
 This project implements a modular parcel logistics system for a fictional company, **CityDrop Logistics**, using custom data structures and algorithms. The system was designed to optimise different parts of an urban delivery network, including delivery zone mapping, customer record management, parcel prioritisation, and end-of-day delivery report sorting.
 
-The project was completed as part of the COMP5008 Data Structures and Algorithms final assignment.
-
 ## Project Objective
 
 The main objective of this project was to design and implement a logistics system using core abstract data types and algorithms without relying heavily on built-in data structures.
